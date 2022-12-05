@@ -1,3 +1,5 @@
+import random
+
 if 5 > 2:
     print("Yes")
 
@@ -131,3 +133,80 @@ x = bytes(5)
 x = bytearray(5)
 x = memoryview(bytes(5))
 # ?
+
+# e means to power of 10
+x = 1.7e1
+print(x)
+
+# you can any number into any other but not complex to any other
+
+# random, later
+print(random.random())
+print(random.randrange(1,100))
+
+x = int(2.8) # int will cut decimals
+print(x)
+
+a = """
+Multiline
+string
+here
+"""
+
+print(a)
+
+# Python doesn't have char data type, 1 char is just 1 len string
+
+a = "hello world"
+print(a[4])
+
+# You can iterate through string, it's iterable
+for i in a:
+    print(i,end="...")
+
+# Len of string
+print(len(a))
+
+# Check if is in word
+print("hello" in a)
+
+# Check if IS NOT in word
+print("not in word" not in a)
+
+# Slicing string in range, from beginning, from end
+print(a[0:5])
+print(a[:5])
+print(a[6:])
+
+# Negative slicing (from end)
+print(a[-1])
+
+# String methods don't change original, returns new
+# Upper, lower, remove whitespaces, replace, split words into list
+a = "   hello, world   "
+print(a.upper())
+print(a.lower())
+print(a.strip())
+print(a.replace("h","m"))
+print(a.split(","))
+
+a = "Hello"
+b = "world"
+print(a + " " + b)
+
+a = "Formatting {} {}"
+print(a.format("is","cool"))
+
+a = "Formatting {1} {0}"
+print(a.format("cool","is"))
+
+print("Illegal \"characters\"")
+
+
+# Most things return true, only 0, empty string, empty lists etc. returns false
+print(True)
+print(False)
+print(bool(11))
+print(bool("lol"))
+print(bool(0))
+print(bool(""))
