@@ -84,31 +84,31 @@ print(x)
 
 # Data types
 
-x1 = "string" # string
-x2 = 5 # int
-x3 = 5.5 # float
-x4 = 5j # complex
+x1 = "string"  # string
+x2 = 5  # int
+x3 = 5.5  # float
+x4 = 5j  # complex
 
 # sequence
-x5 = [1,2,3] # list
-x6 = (1,2,3) # tuple
-x7 = range(3) # range
+x5 = [1, 2, 3]  # list
+x6 = (1, 2, 3)  # tuple
+x7 = range(3)  # range
 
 # mapping
-x8 = {"name":"dict"}
+x8 = {"name": "dict"}
 
-x9 = {"set","whatever","it","is"}
-x10 = frozenset({"another",1})
+x9 = {"set", "whatever", "it", "is"}
+x10 = frozenset({"another", 1})
 
 x11 = True
 
 # ? binary ?
 x12 = b"bytes here"
-print(x12) # string but type bytes
+print(x12)  # string but type bytes
 x13 = bytearray(10)
-print(x13) # this thing
+print(x13)  # this thing
 x14 = memoryview(bytes(5))
-print(x14) # another this thing
+print(x14)  # another this thing
 
 # Just none
 x15 = None
@@ -118,14 +118,14 @@ x = int(20)
 x = float(5.5)
 x = complex(2j)
 # Just iterable inside
-x = list(("one","two"))
-x = tuple(("one","two"))
+x = list(("one", "two"))
+x = tuple(("one", "two"))
 x = range(6)
 for i in x:
     print(i)
 x = dict(name="John", surname="Doe")
-x = set(("ite","rable"))
-x = frozenset(("frozen","can't change"))
+x = set(("ite", "rable"))
+x = frozenset(("frozen", "can't change"))
 x = bool(1)
 
 # ?
@@ -142,9 +142,9 @@ print(x)
 
 # random, later
 print(random.random())
-print(random.randrange(1,100))
+print(random.randrange(1, 100))
 
-x = int(2.8) # int will cut decimals
+x = int(2.8)  # int will cut decimals
 print(x)
 
 a = """
@@ -162,7 +162,7 @@ print(a[4])
 
 # You can iterate through string, it's iterable
 for i in a:
-    print(i,end="...")
+    print(i, end="...")
 
 # Len of string
 print(len(a))
@@ -187,7 +187,7 @@ a = "   hello, world   "
 print(a.upper())
 print(a.lower())
 print(a.strip())
-print(a.replace("h","m"))
+print(a.replace("h", "m"))
 print(a.split(","))
 
 a = "Hello"
@@ -195,10 +195,10 @@ b = "world"
 print(a + " " + b)
 
 a = "Formatting {} {}"
-print(a.format("is","cool"))
+print(a.format("is", "cool"))
 
 a = "Formatting {1} {0}"
-print(a.format("cool","is"))
+print(a.format("cool", "is"))
 
 print("Illegal \"characters\"")
 
@@ -210,3 +210,28 @@ print(bool(11))
 print(bool("lol"))
 print(bool(0))
 print(bool(""))
+
+# Operators
+print(1 + 1 - 1 * 1 / 1)
+print(10 % 3)
+print(2**3)
+print(5//2)
+
+x = 2
+y = 5
+
+print(x == y)
+print(x != y)
+print(x > y)
+print(x < y)
+print(x >= y)
+print(x <= y)
+
+print(True and True)
+print(True or True)
+print(not False or False)
+
+print(x is 2)
+print(y is not 2)
+print(x in range(1,10))
+print(y not in range(20,100))
