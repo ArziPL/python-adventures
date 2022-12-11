@@ -235,3 +235,10 @@ print(x is 2)
 print(y is not 2)
 print(x in range(1,10))
 print(y not in range(20,100))
+
+lists = ["this","list"]
+print(lists)
+print(len(lists))
+print(type(lists))
+new_list = list(("new","list"))
+print(new_list)
