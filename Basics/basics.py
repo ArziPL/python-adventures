@@ -242,3 +242,19 @@ print(len(lists))
 print(type(lists))
 new_list = list(("new","list"))
 print(new_list)
+
+test_list = ["hello","world","test","list"]
+print(test_list[0]) # get specific index
+print(test_list[1:3]) # get specific range of indexes
+print(test_list[2:]) # get range from 2 to end
+test_list[2] = "cool" # change third item of list
+test_list[0:1] = ["world","hello"] # change range of indexes of list
+test_list.append("new") # add at the end
+test_list.insert(2,"middle") # add at specific index
+test_list.extend(("tuple","test")) # add any iterable
+test_list.remove("test") # removes specific value
+test_list.pop() # removes last or specified index
+test_list.pop(1)
+print(test_list)
+del test_list[1]
+print(test_list)
