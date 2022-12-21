@@ -255,6 +255,34 @@ test_list.extend(("tuple","test")) # add any iterable
 test_list.remove("test") # removes specific value
 test_list.pop() # removes last or specified index
 test_list.pop(1)
-print(test_list)
-del test_list[1]
-print(test_list)
+del test_list[1] # also deletes item at specified index
+for x in test_list: # iterate over items
+    print(x)
+
+for i in range(len(test_list)): # iterate over indexes
+    print(i)
+
+x = [x for x in test_list if "r" in x] # list comprehension
+print(x)
+
+# newlist = [expression for item in iterable if condition == True]
+
+test_list.sort() # standard sort
+test_list.sort(reverse=True) # reverse sort
+test_list.reverse() # reverse order
+
+test_list_2 = []
+test_list_2 = test_list # THIS IS ONLY REFERENCE
+
+# Correct ways to copy
+a = test_list.copy()
+b = list(test_list)
+
+print("JOIN LISTS")
+# Joining lists
+join_lists = []
+join_lists = join_lists + a
+for i in a:
+    join_lists.append(i)
+join_lists.extend(a)
+print(join_lists)
