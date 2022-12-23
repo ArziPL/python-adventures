@@ -236,6 +236,13 @@ print(y is not 2)
 print(x in range(1,10))
 print(y not in range(20,100))
 
+# There are four collection data types in the Python programming language:
+
+# List is a collection which is ordered and changeable. Allows duplicate members.
+# Tuple is a collection which is ordered and unchangeable. Allows duplicate members.
+# Set is a collection which is unordered, unchangeable*, and unindexed. No duplicate members.
+# Dictionary is a collection which is ordered** and changeable. No duplicate members.
+
 lists = ["this","list"]
 print(lists)
 print(len(lists))
@@ -282,7 +289,108 @@ print("JOIN LISTS")
 # Joining lists
 join_lists = []
 join_lists = join_lists + a
+
+# classic loop
 for i in a:
     join_lists.append(i)
 join_lists.extend(a)
 print(join_lists)
+i = 0
+
+# another way of looping
+while i < len(join_lists):
+    print(join_lists[i])
+    i = i + 1
+
+# ordered, unchangeable, allow duplicates
+tuples = (1,2,3)
+new_tuple = tuple((1,2,3))
+
+# changing values
+temp_list = list(tuples)
+temp_list.reverse()
+changed_tuple = tuple(temp_list)
+print(changed_tuple)
+
+# allowed to add tuples to tuples
+tuples = tuples + tuples
+print(tuples)
+
+# unpacking
+tuples = (1,2,3)
+(one,two,three) = tuples
+print(one,two,three)
+
+# more values
+tuples = (1,2,3,4)
+(one,two,*three) = tuples
+print(one,two,three)
+
+# unordered, unchangeable but can add and remove, without duplicates
+sets = {1,2,3,3}
+print(sets)
+print(len(sets))
+new_set = set(("new","set"))
+print(new_set)
+# no indexes here
+for x in sets:
+    print(x)
+
+print(1 in sets)
+sets.add(4) # can add
+
+# can update set with any iterable
+first_set = {1,2}
+second_iterable = [2,3]
+first_set.update(second_iterable)
+print(first_set)
+
+first_set.remove(1) # remove specific item, if not exist, RAISE AN ERROR
+first_set.discard(4) # same as above BUT WON'T RAISE AN ERROR
+print(first_set)
+
+# union returns new set
+print("JOINING SETS")
+first_set = {1,2,5}
+second_set = {3,4}
+new_set = first_set.union(second_set)
+print(new_set)
+
+# update inserts into choosen set
+first_set = {1,2,5}
+second_set = {2,3,4}
+first_set.update(second_set)
+print(first_set)
+
+print("COOL METHODS")
+# cool set methods
+
+# ONLY the duplicates
+x = {1,2}
+y = {2,3}
+x.intersection_update(y)
+print(x)
+
+# ONLY the duplicates but returns set
+x = {1,2}
+y = {2,3}
+z = x.intersection(y)
+print(z)
+
+# All but not the duplicates
+x = {1,2}
+y = {2,3}
+x.symmetric_difference_update(y)
+print(x)
+# {1,2} and {2,3} returns {1,3}
+# when union on update would give {1,2,3}
+# if something repeats IT IS NOT IN THE SET
+# when in normal is added once
+
+# All but not the duplicates but returns set
+x = {1,2}
+y = {2,3}
+z = x.symmetric_difference(y)
+print(z)
+
+
