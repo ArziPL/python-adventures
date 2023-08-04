@@ -1,4 +1,4 @@
-# Day 1 - project 1
+# Day 1 - project 2
 print("Band name generator")
 city = input("What's your city name?\n")
 pet = input("What's your pet name?\n")
