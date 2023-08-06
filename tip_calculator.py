@@ -7,3 +7,5 @@ final_bill = bill + (bill * (tip_percent / 100))
 each_person_bill = round(final_bill / people, 2)
 
 print(f"Each person should pay ${each_person_bill}")
+
+# next day nothing interesting
