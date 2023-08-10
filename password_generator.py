@@ -30,3 +30,16 @@ while pass_symbols > 0 or pass_numbers > 0:
 print(f"Your password is {''.join(password)}") 
 
 
+# Easier way from tutorial, you need to comment out first way :\
+# password = []
+# for i in range(pass_len - pass_symbols - pass_numbers):
+#     password.append(random.choice(string.ascii_letters))
+
+# for i in range(pass_symbols):
+#     password.append(random.choice(string.punctuation))
+
+# for i in range(pass_numbers):
+#     password.append(random.choice(string.digits))
+
+# random.shuffle(password)
+# print(f"Your password is {''.join(password)}") 
