@@ -1,5 +1,6 @@
 from ingredients import *
 
+profit = 0
 resources = {
     "water": 300,
     "milk": 200,
@@ -8,23 +9,22 @@ resources = {
 }
 
 
-def making_coffee(coffee):
-    """Check if there's enough ingredients, ask for coins, return true if making coffee was hasssle free  """
-    water_requirements = MENU[coffee]["ingredients"]["water"] > resources["water"]
-    milk_requirements = MENU[coffee]["ingredients"]["milk"] > resources["milk"]
-    coffee_requirements = MENU[coffee]["ingredients"]["coffee"] > resources["coffee"]
-    if water_requirements or milk_requirements or coffee_requirements:
-        print("There are not enough ingredients, report the problem to the staff!")
-        return False
-    else:
-        coin_result = handling_coins(coffee, MENU[coffee]["cost"])
-        if coin_result:
-            return True
-        return False
+def making_coffee(coffee, resources_dict):
+    # Checking resources
+    resources_list = list(resources.values())
+    coffee_ingredients = list(MENU[coffee]["ingredients"].values())
+    for index, ingredient in enumerate(coffee_ingredients):
+        if resources_list[index] < ingredient:
+            print("There are not enough ingredients, report the problem to the staff!")
+            return False
+
+    # Coin logic, insert, check if enough then decrease resource
+    coin_result = handling_coins(coffee, MENU[coffee]['cost'])
+    if coin_result:
+        handling_resources(coffee, resources_dict)
 
 
 def handling_coins(coffee, coffee_price):
-    """Ask user for coins, check if there was enough then give away coffe with change"""
     print(f"Please, insert coins, it will be {MENU[coffee]['cost']}PLN")
     five_pln = int(input("Throw 5PLN: ")) * 5
     two_pln = int(input("Throw 2PLN: ")) * 2
@@ -39,15 +39,19 @@ def handling_coins(coffee, coffee_price):
 
 
 def handling_resources(coffee, resources_dict):
-    """Changing resources dict when coffee is made (- ingredients,+ profit)"""
     resources_dict["water"] -= MENU[coffee]["ingredients"]["water"]
     resources_dict["milk"] -= MENU[coffee]["ingredients"]["milk"]
     resources_dict["coffee"] -= MENU[coffee]["ingredients"]["coffee"]
     resources_dict["profit"] += MENU[coffee]["cost"]
 
 
-def print_report(resources_dict):
-    """Printing resources dict in pretty way"""
+def report(resources_dict, action="print"):
+    """Printing resources, if action fill then filling them up with notification"""
+    if action == "fill":
+        print("Stocks replenished!")
+        resources_dict["water"] += 300
+        resources_dict["milk"] += 200
+        resources_dict["coffee"] += 100
     print("Your report:")
     print(f"Water: {resources_dict['water']}ml")
     print(f"Milk: {resources_dict['milk']}ml")
@@ -55,16 +59,7 @@ def print_report(resources_dict):
     print(f"Profit: {resources_dict['profit']}PLN")
 
 
-def refill(resources_dict):
-    """Adding ingredients to resources_dict (300 water, 200 milk, 100 coffee) and printing report on screen"""
-    print("Stocks replenished!")
-    resources_dict["water"] += 300
-    resources_dict["milk"] += 200
-    resources_dict["coffee"] += 100
-    print_report(resources_dict)
-
-
-# Simple thing, asking user for action in loop, then executing functions for those actions
+# Main
 while True:
     print("\n")
     print("1. Espresso")
@@ -75,21 +70,15 @@ while True:
     print("6. Off")
     user_choice = int(input("What would you like to do? Type number: "))
     if user_choice == 1:
-        coffee_result = making_coffee("espresso")
-        if coffee_result:
-            handling_resources("espresso", resources)
+        making_coffee("espresso", resources)
     elif user_choice == 2:
-        coffee_result = making_coffee("latte")
-        if coffee_result:
-            handling_resources("latte", resources)
+        making_coffee("latte", resources)
     elif user_choice == 3:
-        coffee_result = making_coffee("cappuccino")
-        if coffee_result:
-            handling_resources("cappuccino", resources)
+        making_coffee("cappuccino", resources)
     elif user_choice == 4:
-        print_report(resources)
+        report(resources)
     elif user_choice == 5:
-        refill(resources)
+        report(resources, "fill")
     elif user_choice == 6:
         print("Goodbye!")
         exit()
