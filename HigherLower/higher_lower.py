@@ -8,8 +8,9 @@ data = data.data
 list_of_picks = [item for item in range(50)]
 def clear(): return os.system('cls')
 
-# Picking random data and deleting it from list with indexes of all available picks, with every pick it returns the pick and deletes possibility of using it again
+
 def random_pick():
+    """Takes all data and list_of_picks, pick random pick that is left then delete index of it to make sure it won't be used again"""
     global data
     global list_of_picks
     pick = random.choice(list_of_picks)
