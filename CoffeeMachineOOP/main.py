@@ -13,11 +13,8 @@ while True:
     # Making any coffee
     if action in menu.get_items():
         coffee = menu.find_drink(action)
-        enough_resource = coffee_maker.is_resource_sufficient(coffee)
-        if enough_resource:
-            payment = money_machine.make_payment(coffee.cost)
-            if payment:
-                coffee_maker.make_coffee(coffee)
+        if coffee_maker.is_resource_sufficient(coffee) and money_machine.make_payment(coffee.cost):
+            coffee_maker.make_coffee(coffee)
 
     # Report, refill if needed
     elif action == "report":
