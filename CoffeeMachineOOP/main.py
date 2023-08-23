@@ -22,6 +22,7 @@ while True:
     # Report, refill if needed
     elif action == "report":
         coffee_maker.report()
+        money_machine.report()
         refill_needed = input("Do you want to refill? Type 'y' or 'n': ")
         if refill_needed == "y":
             coffee_maker.refill()
