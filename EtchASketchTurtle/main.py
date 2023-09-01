@@ -10,7 +10,7 @@ def tim_forward():
     tim.forward(10)
 
 
-def tim_back():
+def tim_backward():
     tim.back(10)
 
 
@@ -23,7 +23,7 @@ def tim_right():
 
 
 screen.onkey(key="Up", fun=tim_forward)
-screen.onkey(key="Down", fun=tim_back)
+screen.onkey(key="Down", fun=tim_backward)
 screen.onkey(key="Left", fun=tim_left)
 screen.onkey(key="Right", fun=tim_right)
 screen.exitonclick()
